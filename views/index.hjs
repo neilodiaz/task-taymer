@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+	<head>
+		<base href="/">
+		<title>{{ title }}</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+	
+		<div class="container">
+			<div id="todo-list" ng-controller="todoListController" ng-init="getToDoList()">
+				<div class="form-group">
+					<div class="controls row">
+						<div class="span8 col-lg-8 col-md-8">
+							<input type="text" name="newtodo" ng-model="newtodo" value="" placeholder="Task Name" class="form-control">
+						</div>
+						<div class="span4 col-lg-4 col-md-4">
+							<div class="row">
+								<input type="number" name="hours" ng-model="hours" value="0" min="0" max="4" placeholder="hour" class="form-input col-lg-5 col-md-5">
+								<div class="separator col-lg-1 col-md-1">:</div>
+								<input type="number" name="mins" ng-model="mins" value="0" min="0" max="60" placeholder="min" class="form-input col-lg-5 col-md-5"> 
+							</div>
+						</div>
+					</div>
+					<div class="controls">
+						<button ng-model="addtodo" ng-click="addNewTodo()" class="btn btn-large btn-primary add-todo">Add New Task</button>
+					</div>
+				</div>
+				<ul>
+					<li ng-repeat="(key, value) in todos">
+						[[ value.name ]] ([[ value.hours + ':' + value.mins ]]) - <span ng-click="startTimer(key)">Start</span> | <span ng-click="pauseTimer()">Pause</span> | <span ng-click="stopTimer()">Stop</span> | <span ng-click="removeTodo(key)">Remove</span>
+					</li>
+				</ul>
+
+				<div id="running_todo">
+					<p>
+						<span id="todo_name">[[ todo_name ]]</span> <span id="countdown_timer"></span>
+					</p>
+				</div>			
+
+			</div>
+		</div>
+
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/angular/angular.min.js"></script>
+		<script src="/angular-route/angular-route.min.js"></script>
+		<script src="/easytimer/src/easytimer.js"></script>
+		<script src="/javascripts/core.js"></script>
+	</body>
+</html>

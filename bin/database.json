@@ -1,0 +1,9 @@
+{
+	"production": {
+		"driver": "mysql",
+		"host": "localhost",
+		"user": "root",
+		"password": "",
+		"database": "nodejs_prod"
+	}
+}

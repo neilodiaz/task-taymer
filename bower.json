@@ -1,0 +1,13 @@
+{
+    "name": "crud_express",
+    "version": "0.0.1",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "angular": "1.5.x",
+        "angular-mocks": "1.5.x",
+        "angular-route": "1.5.x",
+        "bootstrap": "3.3.x",
+        "easytimer": "albert-gonzalez/easytimer.js"
+    }
+}
