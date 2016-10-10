@@ -7,10 +7,10 @@
 		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
-	<body>
+	<body ng-controller="todoListController" ng-init="getToDoList()">
 	
 		<div class="container">
-			<div id="todo-list" ng-controller="todoListController" ng-init="getToDoList()">
+			<div id="todo-list">
 				<div class="form-group">
 					<div class="controls row">
 						<div class="span8 col-lg-8 col-md-8">
@@ -27,19 +27,27 @@
 					<div class="controls">
 						<button ng-model="addtodo" ng-click="addNewTodo()" class="btn btn-large btn-primary add-todo">Add New Task</button>
 					</div>
+				</div><br>
+				<table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="(key, value) in todos">
+							<td>[[ value.name ]] ([[ value.hours + ':' + value.mins ]])</td>
+							<td class="text-right"><span ng-click="startTimer(key)">Start</span>  <span ng-click="removeTodo(key)">Remove</span></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+		<div id="running_todo" class="btn-primary" ng-show="timer_started">
+			<div class="wrap">
+				<p><span id="todo_name">[[ active_todo_name ]]</span></p>
+				<p><span id="countdown_timer"></span></p>
+				<div id="timer_options">
+					<p id="pause"><button ng-click="pauseResumeTimer()" class="btn btn-info">[[ timer_status ]]</button></p>
+					<p><button ng-click="stopTimer()" class="btn btn-info">Stop</button></p>
 				</div>
-				<ul>
-					<li ng-repeat="(key, value) in todos">
-						[[ value.name ]] ([[ value.hours + ':' + value.mins ]]) - <span ng-click="startTimer(key)">Start</span> | <span ng-click="pauseTimer()">Pause</span> | <span ng-click="stopTimer()">Stop</span> | <span ng-click="removeTodo(key)">Remove</span>
-					</li>
-				</ul>
-
-				<div id="running_todo">
-					<p>
-						<span id="todo_name">[[ todo_name ]]</span> <span id="countdown_timer"></span>
-					</p>
-				</div>			
-
 			</div>
 		</div>
 

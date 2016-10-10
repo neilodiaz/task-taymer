@@ -7,9 +7,13 @@ app.controller('todoListController', todoListController);
 function todoListController($scope, $http)
 {
 	var timer = new Timer();
+	var timer_status = "run";
 
     $scope.todos = [];
     $scope.countdown = '';
+    $scope.active_todo_name = '';
+    $scope.timer_status = "Pause";
+    $scope.timer_started = false;
 
     $scope.getToDoList = function()
     {
@@ -66,7 +70,9 @@ function todoListController($scope, $http)
 
 		timer.start({countdown: true, startValues: start_values});
 		document.getElementById('countdown_timer').innerHTML = timer.getTimeValues().toString();
-		$scope.todo_name = select_todo.name;
+		$scope.active_todo_name = select_todo.name;
+
+		$scope.timer_started = true;
 
 		timer.addEventListener('secondsUpdated', function (e) {
 		    document.getElementById('countdown_timer').innerHTML = timer.getTimeValues().toString();
@@ -81,10 +87,20 @@ function todoListController($scope, $http)
     $scope.stopTimer = function()
     {
     	timer.stop();
+    	$scope.timer_started = false;
     }
 
-    $scope.pauseTimer = function()
+    $scope.pauseResumeTimer = function()
     {
-    	timer.pause();
+    	if ( timer_status == "run" ) {
+    		timer.pause();
+    		timer_status = "paused";
+    		$scope.timer_status = "Resume";
+    	} else if ( timer_status == "paused" ) {
+    		timer.start();
+    		timer_status = "run";
+    		$scope.timer_status = "Pause";
+    	}
+    	console.log('Timer: ' + timer_status);
     }
 }
