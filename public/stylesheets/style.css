@@ -2,17 +2,14 @@ body {
   padding: 20px 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
 }
-
 #todo-list {
     margin: 40px auto 100px auto;
     width: 50%;
     min-width: 570px;
 }
-
 #running_todo {
     position: fixed;
     bottom: 0;
@@ -23,7 +20,6 @@ a {
     color: #FFF;
     padding: 20px 10px;
 }
-
 .wrap {
 	width: 50%;
     min-width: 570px;
@@ -31,35 +27,32 @@ a {
     padding: 0px 48px;
     position: relative;
 }
-
 #todo_name {
 	font-size: 1.5em;
 }
-
 #countdown_timer {
 	font-size: 3.5em;
 }
-
 #running_todo p {
 	margin: 0;
 	line-height: 1;
 }
-
 #timer_options {
 	position: absolute;
 	float: right;
 	top: 0px;
 	right: 48px;
 }
-
 #timer_options .btn {
-	width: 150px;
+	width: 110px;
 	display: block;
 	margin: 0px 0px 5px;
 	font-size: 13px;
 	text-transform: uppercase;
 }
-
+#timer_options .btn .fa {
+	margin-right: 3px;
+}
 .form-input {
 	height: 34px;
     padding: 6px 12px;
@@ -91,4 +84,27 @@ a {
 	text-align: center;
 	font-size: 1.5em;
     padding: 6px 30px;
+}
+table thead tr {
+	border: 1px solid #ddd;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+table tbody tr {
+	border: 1px solid #ddd;
+}
+table td.todo-name.ng-binding {
+	font-size: 1.2em;
+	vertical-align: middle;
+	width: 82%;
+}
+table td.todo-name .timer-count {
+	font-size: 0.85em;
+	color: #337ab7;
+}
+table td.todo-action{
+	width: 17%;
+}
+.action-btn.btn {
+	padding: 3px 12px;
 }

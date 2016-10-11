@@ -4,6 +4,7 @@
 		<base href="/">
 		<title>{{ title }}</title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel='stylesheet' href='/stylesheets/font-awesome.min.css' />
 		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
@@ -29,10 +30,16 @@
 					</div>
 				</div><br>
 				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td class="todo-name">Task Name</td>
+							<td class="todo-action text-center">Action</td>
+						</tr>
+					</thead>
 					<tbody>
 						<tr ng-repeat="(key, value) in todos">
-							<td>[[ value.name ]] ([[ value.hours + ':' + value.mins ]])</td>
-							<td class="text-right"><span ng-click="startTimer(key)">Start</span>  <span ng-click="removeTodo(key)">Remove</span></td>
+							<td class="todo-name">[[ value.name ]] <span class="timer-count">(<strong>[[ value.hours ]]</strong>hrs:<strong>[[value.mins ]]</strong>mins)</span></td>
+							<td class="todo-action text-center"><span ng-click="startTimer(key)" class="action-btn btn btn-success"><i class="fa fa-play"></i></span>  <span ng-click="removeTodo(key)" class="action-btn btn btn-warning remove"><i class="fa fa-trash"></i></span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -45,8 +52,8 @@
 				<p><span id="todo_name">[[ active_todo_name ]]</span></p>
 				<p><span id="countdown_timer"></span></p>
 				<div id="timer_options">
-					<p id="pause"><button ng-click="pauseResumeTimer()" class="btn btn-info">[[ timer_status ]]</button></p>
-					<p><button ng-click="stopTimer()" class="btn btn-info">Stop</button></p>
+					<p id="pause"><button ng-click="pauseResumeTimer()" class="btn btn-info"><i class="fa fa-[[timer_icon]]"></i> [[ timer_status ]]</button></p>
+					<p><button ng-click="stopTimer()" class="btn btn-warning"><i class="fa fa-stop"></i> Stop</button></p>
 				</div>
 			</div>
 		</div>

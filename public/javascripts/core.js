@@ -13,6 +13,7 @@ function todoListController($scope, $http)
     $scope.countdown = '';
     $scope.active_todo_name = '';
     $scope.timer_status = "Pause";
+    $scope.timer_icon = "pause";
     $scope.timer_started = false;
 
     $scope.getToDoList = function()
@@ -95,10 +96,12 @@ function todoListController($scope, $http)
     	if ( timer_status == "run" ) {
     		timer.pause();
     		timer_status = "paused";
+    		$scope.timer_icon = "play";
     		$scope.timer_status = "Resume";
     	} else if ( timer_status == "paused" ) {
     		timer.start();
     		timer_status = "run";
+    		$scope.timer_icon = "pause";
     		$scope.timer_status = "Pause";
     	}
     	console.log('Timer: ' + timer_status);
