@@ -22,6 +22,7 @@ function todoListController($scope, $http)
     	if ( local_todo ) {
     		$scope.todos = local_todo;
     	}
+    	notifyMe();
     }
 
     $scope.addNewTodo = function()
@@ -81,7 +82,16 @@ function todoListController($scope, $http)
 
 		timer.addEventListener('targetAchieved', function (e) {
 		    console.log('done!');
+
 		    // Notification
+		     var options = {
+		        body: "Hey there! Your task timer has now expired!",
+		        sound: "audio/alert.mp3"
+		    }
+		    var notification = new Notification( 'Taymer', options );
+		    console.log(options.sound);
+		    var audio = new Audio('audio/alert.mp3');
+			audio.play();
 		});
     }
 
@@ -105,5 +115,28 @@ function todoListController($scope, $http)
     		$scope.timer_status = "Pause";
     	}
     	console.log('Timer: ' + timer_status);
+    }
+
+    function notifyMe() {
+    	if (!("Notification" in window)) {
+			alert("This browser does not support desktop notification");
+		}
+		// Let's check whether notification permissions have already been granted
+		else if (Notification.permission === "granted") {
+			console.log('pytz');
+			return true;
+		}
+
+		// Otherwise, we need to ask the user for permission
+		else if (Notification.permission !== 'denied') {
+			Notification.requestPermission(function (permission) {
+			// If the user accepts, let's create a notification
+			if (permission === "granted") {
+				console.log('pytz');
+				// var notification = new Notification("Hey there! Your task timer has now expired!");
+				return true;
+			}
+			});
+		}
     }
 }
