@@ -6,9 +6,17 @@ a {
   color: #00B7FF;
 }
 #todo-list {
-    margin: 40px auto 100px auto;
+    margin: 0px auto 100px auto;
     width: 50%;
     min-width: 570px;
+}
+#todo-list h1 {
+	text-align: center;
+	margin: 0px 0px 40px;
+	font-size: 3em;
+	line-height: 1;
+	color: #2e6da4;
+	font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
 }
 #running_todo {
     position: fixed;
@@ -26,6 +34,9 @@ a {
     margin: auto;
     padding: 0px 48px;
     position: relative;
+}
+.hours-mins .span6.col-lg-6{
+	padding: 0 15px 0 0px;
 }
 #todo_name {
 	font-size: 1.5em;
@@ -107,4 +118,6 @@ table td.todo-action{
 }
 .action-btn.btn {
 	padding: 3px 12px;
+	width: 37px;
+    height: 28px;
 }

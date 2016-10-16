@@ -1,0 +1,7 @@
+/* TEAM */
+	Developer: Neiljun I. Odiaz
+	Contact: neiljun.odiaz@gmail.com
+	From: Gusa, CDO, Philippines
+
+/* Thanks */
+	EasyTimer.js: Albert González
