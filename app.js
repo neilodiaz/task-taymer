@@ -1,3 +1,11 @@
+/*
+* Author: Neiljun I. Odiaz
+* Description: A personal task timer created just for fun and to practice Angular.JS 1
+* Version: 0.5
+* Date Created: Oct. 9, 2016
+* Date Latest Update: Oct. 23, 2016
+*/
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
