@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="todoApp">
+<html ng-app="todoApp" ng-element-ready="">
 	<head>
 		<base href="/">
 		<title>{{ title }}</title>
@@ -14,32 +14,32 @@
 		<div class="container">
 			<div id="todo-list">
 				<div class="form-group">
-					<div class="controls row">
-						<div class="span12 col-lg-12 col-md-12">
-							<h1>Personal Task Timer</h1>
-						</div>
-						<div class="span8 col-lg-8 col-md-8">
-							<label>Task Name:</label>
-							<input type="text" name="newtodo" ng-model="newtodo" value="" placeholder="Task Name" class="form-control">
-						</div>
-						<div class="span4 col-lg-4 col-md-4 hours-mins">
-							<div class="row">
-								<div class="span6 col-lg-6 col-md-6">
-									<label>Hours:</label>
-									<input type="number" name="hours" ng-model="hours" value="0" min="0" max="4" placeholder="hour" class="form-input col-lg-12 col-md-12">
-								</div>
-								<div class="span6 col-lg-6 col-md-6">
-									<label>Minutes:</label>
-									<input type="number" name="mins" ng-model="mins" value="0" min="0" max="60" placeholder="min" class="form-input col-lg-12 col-md-12"> 
+					<form ng-submit="addNewTodo()">
+						<div class="controls row">
+							<div class="span12 col-lg-12 col-md-12">
+								<h1>Personal Task Timer</h1>
+							</div>
+							<div class="span8 col-lg-8 col-md-8">
+								<label>Task Name:</label>
+								<input type="text" name="newtodo" ng-model="newtodo" value="" placeholder="Task Name" class="form-control">
+							</div>
+							<div class="span4 col-lg-4 col-md-4 hours-mins">
+								<div class="row">
+									<div class="span6 col-lg-6 col-md-6">
+										<label>Hours:</label>
+										<input type="number" name="hours" ng-model="hours" value="0" min="0" max="10" placeholder="hour" class="form-input col-lg-12 col-md-12">
+									</div>
+									<div class="span6 col-lg-6 col-md-6">
+										<label>Minutes:</label>
+										<input type="number" name="mins" ng-model="mins" value="1" min="1" max="60" placeholder="min" class="form-input col-lg-12 col-md-12"> 
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="controls">
-						<button ng-model="addtodo" ng-click="addNewTodo()" class="btn btn-large btn-primary add-todo">Add New Task</button>
-					</div>
+						<input type="submit" name="" class="hide">
+					</form>
 				</div><br>
-				<table class="table table-striped">
+				<table class="table table-striped" ng-show="todos.length">
 					<thead>
 						<tr>
 							<td class="todo-name">Task List</td>
@@ -49,7 +49,7 @@
 					<tbody>
 						<tr ng-repeat="(key, value) in todos">
 							<td class="todo-name">[[ value.name ]] <span class="timer-count">(<strong>[[ value.hours ]]</strong>hrs:<strong>[[value.mins ]]</strong>mins)</span></td>
-							<td class="todo-action text-center"><button ng-click="startTimer(key, $event)" class="action-btn btn btn-success fa fa-play"></button>&nbsp;<button ng-click="removeTodo(key)" class="action-btn btn btn-warning remove fa fa-trash"></button></td>
+							<td class="todo-action text-center" id="todokey_[[key]]"><button ng-click="startTimer(key, $event)" class="action-btn btn btn-success fa fa-play"></button>&nbsp;<button ng-click="removeTodo(key)" class="action-btn btn btn-warning remove fa fa-trash"></button></td>
 						</tr>
 					</tbody>
 				</table>
