@@ -199,13 +199,13 @@ function todoListController($scope, $http)
 
     // Remove all instances of the timer object
     function cleanSlateTimer() {
-    	timer = "";
     	$scope.stopTimer();
     	$scope.timer_started = false;
     	localStorage.removeItem('active_todo');
     	var running_todo_bar = document.getElementById('running_todo');
 		angular.element(running_todo_bar).addClass('ng-hide');
 		localStorage.removeItem('active_todo');
+		timer = "";
     }
 
     // Check if there are still todo on the list then reset and start new timer
